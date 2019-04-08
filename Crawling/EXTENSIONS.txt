@@ -1,3 +1,16 @@
 
 1. Domains beyond Amazon.com
-2. Products beyond just simply books.
+
+In order to crawl domains beyond Amazon.com, one would need extremely modular functionality. While I believe that the crawler object
+I created and its classes could adequately structure the links and products of a large eCommerce website crawl, the methods I wrote were
+certainly hardcoded to crawl the 'Last 30 days' listing page of Books category. The methods would need to take as input a varying list of
+elements and their identifying attributes to locate content. The crawler would need sub-methods such as a method for determining whether a listing
+link contains a products section or more unseen listing links or both. Due to time constraints and the learning curve I faced working almost
+strictly with technologies I had never been exposed to, I was not able to implement the modularity necessary for a cross-domain crawler.
+
+
+2. Products beyond just simply books
+
+To crawl all categories of Amazon.com, I would define a subclass of Product for each product category, allowing each type to haves its own
+attributes. The product-page crawling method could take as input the category allowing it to create the right type of product object and fetch the
+appropriate content from the html page.
