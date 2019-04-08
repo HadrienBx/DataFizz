@@ -1,9 +1,19 @@
 # Crawling
 
+
+## Instructions for running the crawler:
+(in DataFizz/Crawling directory)
+1. $ npm install
+2. $ npm start
+3. output in ./data/data.json
+
+Note: data/previousData.json is the output I generated locally.
+
+
 ## Purpose
 
 This exercise is designed to test your ability to use object-oriented design principles, data structures and standard algorithms to create a web crawler. We will not only be looking at the data points you have collected from the web, but at the style of your code, its modularity, its extensibility, and ease at which the app can be built and tested. As a small team we believe these principles are a key element of our continued success.
- 
+
 
 ## Problem Description
 
@@ -36,7 +46,7 @@ Your application should output its results in a valid and well structured JSON d
         "weight": "13.9 oz",
         "sourceURL": "https://www.amazon.com/gp/product/1623155975/ref=s9_acsd_simh_bw_c_x_1_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-3&pf_rd_r=5S54Z6125KJDKW8DEBTV&pf_rd_r=5S54Z6125KJDKW8DEBTV&pf_rd_t=101&pf_rd_p=fe185ec9-c8f5-44c0-897e-4c0bde93268c&pf_rd_p=fe185ec9-c8f5-44c0-897e-4c0bde93268c&pf_rd_i=283155"
     }
-    
+
 }
 ```
 
