@@ -8,6 +8,8 @@ class Crawler {
     // {category name: category object}
     this.categories = {};
     this.numCategories = 0;
+    // % of categories for which crawler successfully discovers sub categories
+    this.successFetchCategories = 0;
   }
 
   // args: url
@@ -109,14 +111,48 @@ class Crawler {
       if (!(url.startsWith('https://') || url.startsWith('http://') || url.startsWith('www.'))) {
         url = baseURL + url;
       }
-      const subCat = new Listing(name, catName, url);
+      const subCat = new SubCategory(name, category, url);
       cat.subCategories[name] = subCat;
       cat.numSubCategories++;
     });
-    console.log('Category crawled successfully.');
+    console.log('Category: '+category+' crawled. '+cat.numSubCategories+' subcategories discovered.');
   }
 
-  async fetchAllSubCategories(url, category) {
+  // args: none
+  // out: fetches all subcategories for each category
+  async fetchAllSubCategories() {
+    const categories = await Object.keys(this.categories);
+    var i;
+    for (i = 0; i < categories.length; i++) {
+      await this.fetchSubCategories(categories[i]);
+    }
+    await this.setSuccessFetchCategories()
+  }
+
+  //// YOU ARE HERE
+  // want %(subcat link points to products) for each cat
+  // want numSubCat for Crawler
+  // want %(successSubcatLinks points to products) for crawler
+
+  // args: subcategory name, number products desired
+  // out: adds links subcategory.productLinks
+  async fetchProducts(subcategory, n) {
+
+  }
+
+  async crawlProduct(category, subcategory, url) {
+
+  }
+
+  async crawlSubCategory(category, subcategory, n) {
+
+  }
+
+  async crawlCategory(category, n) {
+
+  }
+
+  async crawlAll(n) {
 
   }
 
@@ -124,6 +160,17 @@ class Crawler {
   //set methods
   setStartURL(url) {
     this.startURL = url;
+  }
+  setSuccessFetchCategories() {
+    const categories = Object.values(this.categories);
+    var numSuccess = 0
+    var i;
+    for (i = 0; i < categories.length; i++) {
+      if (categories[i].numSubCategories > 0) {
+        numSuccess++;
+      }
+    }
+    this.successFetchCategories = (numSuccess / this.numCategories);
   }
 
   // get methods
@@ -136,6 +183,9 @@ class Crawler {
   getNumCategories() {
     return this.numCategories;
   }
+  getSuccessFetchCategories() {
+    return this.successFetchCategories;
+  }
 }
 
 // represents a category page pointing to subCateogry listings
@@ -144,7 +194,7 @@ class Category {
     this.name = name;
     // url => result of chosing category in homepage search bar drop down menu and entering an empty string as search term
     this.url = url;
-    // {'name of subCategory': listing object}
+    // {'name of subCategory': SubCategory object}
     this.subCategories = {};
     this.numSubCategories = 0;
   }
@@ -165,11 +215,16 @@ class Category {
 }
 
 // represents a listing page containing products
-class subCategory {
+class SubCategory {
   constructor(name, category, url) {
     this.name = name;
     this.category = category;
     this.url = url;
+    this.numLinks = 0
+    this.numProducts = 0;
+    // array of fetched product links
+    this.productLinks = [];
+    // array of products crawled from product links
     this.products = [];
   }
 
@@ -182,6 +237,15 @@ class subCategory {
   }
   getProducts() {
     return this.products;
+  }
+  getProductLinks() {
+    return this.productLinks;
+  }
+  getNumLinks() {
+    return this.numLinks;
+  }
+  getNumProducts() {
+    return this.numProducts;
   }
 }
 
@@ -227,8 +291,8 @@ class Product{
   getName() {
     return this.name;
   }
-  getListing() {
-    return this.listing;
+  getCategory() {
+    return this.category;
   }
   getSubCategory() {
     return this.subCategory;
@@ -261,13 +325,16 @@ async function main() {
   const amazon = await new Crawler('https://www.amazon.com');
   // fetch categories
   await amazon.fetchCategories(['All Departments','Clothing, Shoes & Jewelry']);
-  // fetch Books subCategories
-  await amazon.fetchSubCategories('Books');
-  // get books category
-  const books = await amazon.getCategories()['Books'];
-  console.log('\n'+books.getNumSubCategories()+'\n');
-  console.log(books.getSubCategories());
-  console.log('\n\n\n\n\n\n');
+  // fetch all subcategories
+  await amazon.fetchAllSubCategories();
+  //
+  const percentSuccess = await amazon.getSuccessFetchCategories();
+  const categories = await amazon.getCategories();
+  console.log('\n\n\n\n\n');
+  console.log(categories);
+  console.log('\n\n\n\n\n');
+  console.log(percentSuccess);
+  console.log('\n\n\n\n\n');
 
 
 }
@@ -284,3 +351,10 @@ main().catch((err) => {
 // const categories = await amazon.getCategories();
 // console.log('\n'+amazon.getNumCategories()+'\n');
 // console.log(categories);
+
+// await amazon.fetchSubCategories('Books');
+// // get books category
+// const books = await amazon.getCategories()['Books'];
+// console.log('\n'+books.getNumSubCategories()+'\n');
+// console.log(books.getSubCategories());
+// console.log('\n\n\n\n\n\n');
