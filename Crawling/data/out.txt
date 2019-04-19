@@ -1,0 +1,65 @@
+Alexa Skills has a fetch links success rate of 100%.
+Amazon Devices has a fetch links success rate of 50%.
+Amazon Fresh has a fetch links success rate of 0%.
+Amazon Warehouse has a fetch links success rate of 0%.
+Appliances has a fetch links success rate of 45.45454545454545%.
+Apps & Games has a fetch links success rate of 100%.
+Arts, Crafts & Sewing has a fetch links success rate of 100%.
+Automotive Parts & Accessories has a fetch links success rate of 0%.
+Baby has a fetch links success rate of 100%.
+Beauty & Personal Care has a fetch links success rate of 88.88888888888889%.
+Books has a fetch links success rate of 90.625%.
+CDs & Vinyl has a fetch links success rate of 0%.
+Cell Phones & Accessories has a fetch links success rate of 0%.
+Fashion-Women has a fetch links success rate of 0%.
+Fashion-Men has a fetch links success rate of 0%.
+Fashion-Girls has a fetch links success rate of 100%.
+Fashion-Boys has a fetch links success rate of 0%.
+Collectibles & Fine Art has a fetch links success rate of 83.33333333333334%.
+Computers has a fetch links success rate of 0%.
+Courses has a fetch links success rate of 54.54545454545454%.
+Credit and Payment Cards has a fetch links success rate of 0%.
+Digital Music has a fetch links success rate of 0%.
+Electronics has a fetch links success rate of 0%.
+Garden & Outdoor has a fetch links success rate of 0%.
+Gift Cards has a fetch links success rate of 50%.
+Grocery & Gourmet Food has a fetch links success rate of 100%.
+Handmade has a fetch links success rate of 0%.
+Health, Household & Baby Care has a fetch links success rate of 0%.
+Home & Business Services has a fetch links success rate of 62.5%.
+Home & Kitchen has a fetch links success rate of 0%.
+Industrial & Scientific has a fetch links success rate of 19.230769230769234%.
+Just for Prime has a fetch links success rate of 0%.
+Kindle Store has a fetch links success rate of 100%.
+Luggage & Travel Gear has a fetch links success rate of 100%.
+Luxury Beauty has a fetch links success rate of 0%.
+Magazine Subscriptions has a fetch links success rate of 100%.
+Movies & TV has a fetch links success rate of 0%.
+Musical Instruments has a fetch links success rate of 0%.
+Office Products has a fetch links success rate of 0%.
+Pet Supplies has a fetch links success rate of 100%.
+Prime Pantry has a fetch links success rate of 0%.
+Prime Video has a fetch links success rate of 0%.
+Software has a fetch links success rate of 100%.
+Sports & Outdoors has a fetch links success rate of 0%.
+Tools & Home Improvement has a fetch links success rate of 0%.
+Toys & Games has a fetch links success rate of 100%.
+Vehicles has a fetch links success rate of 0%.
+Video Games has a fetch links success rate of 88.23529411764706%.
+
+Crawler fetches categories by creating URI for each option in drop down of top search menu of home page (with empty string for search argument).
+Found 48 categories of 49 target categories.
+Missed Fashion-Baby.
+
+Crawler fetches subcategories by looking for a certain link section structure in left nave bar of category page.
+Found subcategories for 23 categories,  or 48% of all categories.
+Found total of 312 subcategories.
+
+Crawler fetches product links of listing by finding results div and iterating through elements.
+Then next page if necessary. First page has different structure than next pages.
+Attempted to fetch 20 links for each identified subcategory.
+Found product links for 22 of 23 categories for which subcategories were identified.
+Crawler was able to find 20 products in all subcategories of 12 categories.
+Average of 22 categories success was 83.31%.
+Average of 49 categories 37.4%.
+This suggests that much of the Amazon listing pages has a similar structure. 
