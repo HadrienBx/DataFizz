@@ -1,0 +1,69 @@
+Crawler V2 Focus on able to fetch all product links
+
+// Fetch Categories
+Crawler fetches categories by creating URI for each option in drop down of top search menu of home page (with empty string for search argument).
+Found 48 categories of 49 target categories.
+Missed Fashion-Baby.
+
+// Fetch Subcategories
+Crawler fetches subcategories by looking for a certain link section structure in left nave bar of category page.
+Found subcategories for 23 categories,  or 48% of all categories.
+Found total of 312 subcategories.
+
+// Fetch Product Links for all Subcategories
+Crawler fetches product links of listing by finding results div and iterating through elements.
+Then next page if necessary. First page has different structure than next pages.
+Attempted to fetch 20 links for each identified subcategory.
+Found product links for 22 of 23 categories for which subcategories were identified.
+Crawler was able to find 20 products in all subcategories of 12 categories.
+Average of 22 categories success was 83.31%.
+Average of 49 categories 37.4%.
+This suggests that much of the Amazon listing pages has a similar structure.
+
+Would do next?
+- Testing Ease/Speed
+  - Appify app for better, non-repetitive testing?
+  - Save/Load crawler cats and subcats to/from JSON data file.
+
+- Find all subcategories by checking all links in category's left nav bar for results div.
+  - Would need to check each subCatLink and product to make sure not crawled already.
+
+- Test fetchProductLinks on all subcategories with 50 products.
+
+- Scalability
+  - At what point can Amazon detect and block you?
+  - Use asynchronous features when possible.
+
+
+Notes on Project and my Webscraping experience:
+
+- Previous web scrap experience:
+  - Using Python, requests, urllib, beautifulSoup4, pandas.Dataframe (for csv)
+  - Attempted to make a web crawler for my sister (she is flight attendant for United) that will log in to her FA portal and extract pay data
+    into csv to be used as input to another program that checks to see if paid amount is indeed correct.
+    This is surprisingly a real issue at United. A woman charges other FAs 20$ a check to verify.
+    App could do checks for free and take fee only if errors are detected.
+    Could not get past log in.....
+  - Have made several basic crawlers such as crawling latin american start up directory for my friend working in VC in Medellin
+    https://lavca.org/vc/startup-directory/?fbclid=IwAR03NoQMw2YzuTr7gKLkaMymJDIbpeR14ZV1uHZ0kwBcTs6OBNCww_Qozm0
+    Extracted all available data for each company into csv.
+    Easy, took under an hour.
+
+- Coding Challenge Experience
+  - First time working with Node.js, Puppeteer, Cheerio and ES6 or any asynchronous environment.
+  - learning asynchronous under time crunch using all new tools => pretty much just figured out how to make my code synchronous using async/await
+  - enjoyed learning and working with node.js, ex, package.json and npm
+  - I LOVE PUPPETEER! Finally able bypass bot detection AND do pretty much anything!
+  - cheerio came pretty naturally
+  - ISSUE: focused on results over learning to write proper, clean, modular, ES6
+  - BUILD APP !!!!!!!!
+
+- Projects started since learning node.js, es6, and puppeteer
+  - LinkedIn Bot:
+    - Task = Given csv of thousands of profile url and some data for each such as name and position title,
+      Log in to client user and send 25 connect requests a day with personalized messages.
+    - Current progress !!!!!!!!
+  - Retry United scrap
+    - progress !!!!!!!!!
+  - Learning React.js with intent on using as part of webstore stack
+    - so far just made TicTacToe game from intro guide
